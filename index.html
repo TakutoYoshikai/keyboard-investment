@@ -63,7 +63,7 @@
         const minutes = document.getElementById("minutes").value;
         const years = document.getElementById("years").value;
         const days = years * 114.0;
-        const diff = days * minutes * (hourlyWage / 60.0);
+        const diff = parseInt(days * minutes * (hourlyWage / 60.0));
         const gain = diff - price;
         if (gain < 0) {
           document.getElementById("result").innerText = `${-1 * gain}円損をします`;
