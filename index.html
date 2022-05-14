@@ -5,7 +5,8 @@
     <title>キーボードへの投資</title>
     <style>
       body {
-        background-color: #eee;
+        background-color: #350d36;
+        padding-top: 60px;
       }
       input[type="number"]::-webkit-outer-spin-button, 
       input[type="number"]::-webkit-inner-spin-button { 
@@ -16,24 +17,37 @@
         width: 80px;
         text-align: center;
         -moz-appearance:textfield;
-        border: 3px solid #000;
+        border: 3px solid #333;
         border-radius: 6px;
         margin-bottom: 10px;
       }
       .title {
         text-align: center;
+        margin-bottom: 60px;
+        color: #350d36;
+        font-size: 26px!important;
+      }
+      .main {
+        background-color: rgba(255,255,255,0.96);
+        padding: 40px;
       }
       .main * {
         font-size: 22px;
         line-height: 30px;
+        color: #333;
       }
       .main {
         width: 300px;
         margin-left: auto;
         margin-right: auto;
       }
+      #result {
+        text-decoration: underline;
+        text-align: center;
+      }
       #copy-url {
-        font-size: 16px;
+        margin: 0;
+        font-size: 12px;
         text-align: center;
         font-weight: bold;
         text-decoration: underline;
@@ -71,6 +85,7 @@
           minutes = parseInt(getParam("minutes"));
           years = parseInt(getParam("years"));
         } catch(err) {
+          onChange();
           return;
         }
         document.getElementById("price").value = price;
@@ -102,14 +117,14 @@
     </script>
   </head>
   <body>
-    <h2 class="title">
-      キーボードへの投資
-    </h2>
     <div class="main">
-      <input type="number" value="30000" id="price" onchange="onChange();">円のキーボードを買って<br>
-      時給<input type="number" value="3000" id="hourly-wage" onchange="onChange();">円で<br>
-      <input type="number" value="10" id="years" onchange="onChange();">年働き続けて<br>
-      毎日<input type="number" value="20" id="minutes" onchange="onChange();">分早く仕事が終われば<br>
+      <h2 class="title">
+        キーボードへの投資
+      </h2>
+      <input type="number" value="30000" id="price" onchange="onChange();"> 円のキーボードを買って<br>
+      時給<input type="number" value="3000" id="hourly-wage" onchange="onChange();"> 円で<br>
+      <input type="number" value="10" id="years" onchange="onChange();"> 年働き続けて<br>
+      毎日 <input type="number" value="20" id="minutes" onchange="onChange();"> 分早く仕事が終われば<br>
       <h2 id="result"></h2>
       <p id="copy-url" onclick="copyUrl()">共有URLをコピー</p>
 
