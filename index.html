@@ -62,7 +62,7 @@
         const hourlyWage = document.getElementById("hourly-wage").value;
         const minutes = document.getElementById("minutes").value;
         const years = document.getElementById("years").value;
-        const days = years * 114.0;
+        const days = years * 251.0;
         const diff = parseInt(days * minutes * (hourlyWage / 60.0));
         const gain = diff - price;
         if (gain < 0) {
