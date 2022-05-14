@@ -64,11 +64,12 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
       function initialize() {
+        let price, hourlyWage, minutes, years;
         try {
-          const price = parseInt(getParam("price"));
-          const hourlyWage = parseInt(getParam("hourly"));
-          const minutes = parseInt(getParam("minutes"));
-          const years = parseInt(getParam("years"));
+          price = parseInt(getParam("price"));
+          hourlyWage = parseInt(getParam("hourly"));
+          minutes = parseInt(getParam("minutes"));
+          years = parseInt(getParam("years"));
         } catch(err) {
           return;
         }
