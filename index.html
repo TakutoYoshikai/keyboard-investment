@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script>
+      function onChange() {
+        const price = document.getElementById("price").value;
+        const hourlyWage = document.getElementById("hourly-wage").value;
+        const minutes = document.getElementById("minutes").value;
+        const years = document.getElementById("years").value;
+        const days = years * 114.0;
+        const diff = days * minutes * (hourlyWage / 60.0);
+        const gain = diff - price;
+        if (gain < 0) {
+          document.getElementById("result").innerText = `${-1 * gain}円損をします`;
+        } else {
+          document.getElementById("result").innerText = `${gain}円得をします`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <input type="number" value="30000" id="price" onchange="onChange();">円のキーボードを買って
+      時給<input type="number" value="3000" id="hourly-wage" onchange="onChange();">円で
+      <input type="number" value="10" id="years" onchange="onChange();">年働き続けて
+      毎日<input type="number" value="20" id="minutes" onchange="onChange();">分早く仕事が終われば
+      <h2 id="result"></h2>
+
+    </div>
+  </body>
+</html>
