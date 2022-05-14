@@ -3,6 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>キーボードへの投資</title>
+    <style>
+      body {
+        background-color: #eee;
+      }
+      input[type="number"]::-webkit-outer-spin-button, 
+      input[type="number"]::-webkit-inner-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      } 
+      input[type="number"] {
+        width: 70px;
+        text-align: center;
+        -moz-appearance:textfield;
+        border: 3px solid #000;
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+      .title {
+        text-align: center;
+      }
+      .main * {
+        font-size: 22px;
+        line-height: 30px;
+      }
+      .main {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #copy-url {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    </style>
     <script>
       function onChange() {
         const price = document.getElementById("price").value;
@@ -18,15 +54,62 @@
           document.getElementById("result").innerText = `${gain}円得をします`;
         }
       }
+      function getParam(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) throw new Error("URL QUERY ERROR");
+        if (!results[2]) throw new Error("URL QUERY ERROR");;
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      function initialize() {
+        try {
+          const price = parseInt(getParam("price"));
+          const hourlyWage = parseInt(getParam("hourly"));
+          const minutes = parseInt(getParam("minutes"));
+          const years = parseInt(getParam("years"));
+        } catch(err) {
+          return;
+        }
+        document.getElementById("price").value = price;
+        document.getElementById("hourly-wage").value = hourlyWage;
+        document.getElementById("minutes").value = minutes;
+        document.getElementById("years").value = years;
+
+        onChange();
+      }
+      function copyUrl() {
+        const price = document.getElementById("price").value;
+        const hourlyWage = document.getElementById("hourly-wage").value;
+        const minutes = document.getElementById("minutes").value;
+        const years = document.getElementById("years").value;
+        const url = `https://takutoyoshikai.github.io/keyboard-investment?price=${price}&hourly=${hourlyWage}&minutes=${minutes}&years=${years}`
+         const pre = document.createElement('pre');
+         pre.style.webkitUserSelect = 'auto';
+         pre.style.userSelect = 'auto';
+         pre.textContent = url;
+
+         document.body.appendChild(pre);
+         document.getSelection().selectAllChildren(pre);
+         const result = document.execCommand('copy');
+
+         document.body.removeChild(pre);
+
+      }
     </script>
   </head>
   <body>
+    <h2 class="title">
+      キーボードへの投資
+    </h2>
     <div class="main">
-      <input type="number" value="30000" id="price" onchange="onChange();">円のキーボードを買って
-      時給<input type="number" value="3000" id="hourly-wage" onchange="onChange();">円で
-      <input type="number" value="10" id="years" onchange="onChange();">年働き続けて
-      毎日<input type="number" value="20" id="minutes" onchange="onChange();">分早く仕事が終われば
+      <input type="number" value="30000" id="price" onchange="onChange();">円のキーボードを買って<br>
+      時給<input type="number" value="3000" id="hourly-wage" onchange="onChange();">円で<br>
+      <input type="number" value="10" id="years" onchange="onChange();">年働き続けて<br>
+      毎日<input type="number" value="20" id="minutes" onchange="onChange();">分早く仕事が終われば<br>
       <h2 id="result"></h2>
+      <p id="copy-url" onclick="copyUrl()">共有URLをコピー</p>
 
     </div>
     <script>
