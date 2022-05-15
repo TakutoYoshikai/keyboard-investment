@@ -2,11 +2,13 @@ body {
   background-color: #350d36;
   padding-top: 60px;
 }
+
 input[type="number"]::-webkit-outer-spin-button, 
 input[type="number"]::-webkit-inner-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 } 
+
 input[type="number"] {
   width: 80px;
   text-align: center;
@@ -15,6 +17,7 @@ input[type="number"] {
   border-radius: 6px;
   margin-bottom: 10px;
 }
+
 .title {
   text-align: center;
   margin-top: 20px;
@@ -22,6 +25,7 @@ input[type="number"] {
   color: #350d36;
   font-size: 26px!important;
 }
+
 .main {
   background-color: rgba(255,255,255,0.96);
   padding: 40px;
@@ -30,17 +34,18 @@ input[type="number"] {
   margin-left: auto;
   margin-right: auto;
 }
+
 .main * {
   font-size: 22px;
   line-height: 30px;
   color: #333;
 }
-.main {
-}
+
 #result {
   text-decoration: underline;
   text-align: center;
 }
+
 #copy-url {
   margin: 0;
   font-size: 12px;

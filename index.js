@@ -13,6 +13,7 @@ function onChange() {
     document.getElementById("result").innerText = `${gain}円得をします`;
   }
 }
+
 function getParam(name, url) {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, "\\$&");
@@ -22,6 +23,7 @@ function getParam(name, url) {
   if (!results[2]) throw new Error("URL QUERY ERROR");;
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
 function initialize() {
   let price, hourlyWage, minutes, years;
   try {
@@ -40,6 +42,7 @@ function initialize() {
 
   onChange();
 }
+
 function copyUrl() {
   const price = document.getElementById("price").value;
   const hourlyWage = document.getElementById("hourly-wage").value;
@@ -57,5 +60,4 @@ function copyUrl() {
 
   document.body.removeChild(pre);
   alert("共有URLコピーしました。このURLを開くとこの画面の数値がそのまま表示されます。");
-
 }
